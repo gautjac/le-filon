@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "le-filon",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev:vite", "--", "--port", "5247"],
+      "port": 5247
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: #171210;
+  /* lamplit rock face: a warm pool of light, faint mineral grain */
+  background-image:
+    radial-gradient(circle at 22% 8%, rgba(232, 176, 75, 0.10), transparent 46%),
+    radial-gradient(circle at 86% 96%, rgba(201, 122, 58, 0.08), transparent 50%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-attachment: fixed;
+  color: #ece1cf;
+  font-family: "Spectral", Georgia, serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/* A miner's hairline — a thin gilt rule. */
+.hairline {
+  border: none;
+  height: 0;
+  border-top: 1px solid rgba(232, 176, 75, 0.20);
+}
+
+/* Reveal-card flip surface */
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card-3d.is-flipped {
+  transform: rotateX(180deg);
+}
+.card-face {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.card-face.back {
+  transform: rotateX(180deg);
+}
+
+/* Drop cap for the source snippet */
+.dropcap::first-letter {
+  font-family: "Bricolage Grotesque", Georgia, serif;
+  font-weight: 800;
+  font-size: 2.9em;
+  line-height: 0.78;
+  float: left;
+  padding: 0.06em 0.12em 0 0;
+  color: #e8b04b;
+}
+
+textarea,
+input {
+  font-family: inherit;
+}
+
+::selection {
+  background: rgba(232, 176, 75, 0.30);
+  color: #f6efe2;
+}
+
+/* Custom scrollbar in the mine */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(232, 176, 75, 0.3) transparent;
+}
+*::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+*::-webkit-scrollbar-thumb {
+  background: rgba(232, 176, 75, 0.28);
+  border-radius: 9px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(232, 176, 75, 0.5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .card-3d {
+    transition: none !important;
+  }
+}
